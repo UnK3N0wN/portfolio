@@ -1,0 +1,9 @@
+venv/
+portfolio/
+.env
+db.sqlite3
+media/
+staticfiles/
+__pycache__/
+frontend/node_modules/
+frontend/dist/
