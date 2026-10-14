@@ -49,10 +49,8 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    "cloudinary_storage",
     'django.contrib.staticfiles',
 
-    "cloudinary",
     "rest_framework",
     "corsheaders",
     "projects",
@@ -156,7 +154,7 @@ STORAGES = {
     "staticfiles": {"BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"},
 }
 if os.environ.get("CLOUDINARY_URL"):
-    STORAGES["default"] = {"BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage"}
+    STORAGES["default"] = {"BACKEND": "projects.storage.CloudinaryMediaStorage"}
 
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
