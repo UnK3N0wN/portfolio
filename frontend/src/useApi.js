@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const API_URL = import.meta.env.VITE_API_URL ?? "http://localhost:8000";
+export const API_URL = (import.meta.env.VITE_API_URL ?? "http://localhost:8000").replace(/\/+$/, "");
 
 export default function useApi(path, initial = []) {
   const [data, setData] = useState(initial);
