@@ -23,7 +23,14 @@ class CloudinaryMediaStorage(Storage):
         return False  # Cloudinary adds a unique suffix, so names never clash
 
     def url(self, name):
-        return cloudinary_url(name, secure=True, quality="auto")[0]
+        return cloudinary_url(
+            name,
+            secure=True,
+            quality="auto",
+            fetch_format="auto",
+            width=1600,
+            crop="limit",
+        )[0]
 
     def delete(self, name):
         cloudinary.uploader.destroy(os.path.splitext(name)[0], resource_type="image")
