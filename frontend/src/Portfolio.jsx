@@ -7,7 +7,6 @@ import ThemeToggle from "./ThemeToggle";
 import LoadingPanel from "./LoadingPanel";
 
 const NAME = "Blesson Reji";
-const BRAND = "My Portfolio"
 const DISPLAY = "font-['Bricolage_Grotesque']";
 
 const NAV_LINKS = [
@@ -53,7 +52,7 @@ function Navbar() {
     <header className="sticky top-0 z-50 bg-page/85 backdrop-blur">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
         <a href="#home" className={`${DISPLAY} text-xl font-bold text-ink`}>
-          {BRAND}
+          {NAME}
         </a>
         <ul className="hidden items-center gap-9 md:flex">
           {NAV_LINKS.slice(0, 3).map((l) => (
@@ -168,11 +167,8 @@ function SectionHeading({ title, subtitle }) {
   );
 }
 
-function SectionState({ loading, error, isEmpty, emptyText, children }) {
-  if (loading) {
-    return <LoadingPanel label={label} />;
-  } 
-
+function SectionState({ loading, label, error, isEmpty, emptyText, children }) {
+  if (loading) return <LoadingPanel label={label} />;
   if (error) {
     return (
       <p role="alert" className="rounded-2xl bg-red-50 p-5 text-red-800 dark:bg-red-950/60 dark:text-red-200">
