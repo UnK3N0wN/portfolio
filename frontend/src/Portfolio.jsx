@@ -4,6 +4,7 @@ import ProjectCard from "./ProjectCard";
 import useApi from "./useApi";
 import About, { Contact } from "./About";
 import ThemeToggle from "./ThemeToggle";
+import LoadingPanel from "./LoadingPanel";
 
 const NAME = "Blesson Reji";
 const BRAND = "My Portfolio"
@@ -169,14 +170,9 @@ function SectionHeading({ title, subtitle }) {
 
 function SectionState({ loading, error, isEmpty, emptyText, children }) {
   if (loading) {
-    return (
-      <div className="grid gap-8 lg:grid-cols-2" aria-busy="true">
-        {[0, 1].map((i) => (
-          <div key={i} className="h-72 animate-pulse rounded-3xl bg-ink/10" />
-        ))}
-      </div>
-    );
-  }
+    return <LoadingPanel label={label} />;
+  } 
+
   if (error) {
     return (
       <p role="alert" className="rounded-2xl bg-red-50 p-5 text-red-800 dark:bg-red-950/60 dark:text-red-200">
@@ -195,6 +191,7 @@ function FeaturedProjects() {
       <SectionHeading title="Featured projects" subtitle="Things I've designed, built, and deployed." />
       <SectionState
         loading={loading}
+        label="featured projects"
         error={error}
         isEmpty={projects.length === 0}
         emptyText="No featured projects yet. Mark a project as featured in the Django admin."
@@ -227,6 +224,7 @@ function GitHubRepos() {
       <SectionHeading title="More on GitHub" subtitle="Public repositories, pulled live from the GitHub API." />
       <SectionState
         loading={loading}
+        label="GitHub repositories"
         error={error}
         isEmpty={repos.length === 0}
         emptyText="No public repositories found."

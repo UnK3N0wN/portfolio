@@ -39,3 +39,16 @@
 }
 
 body { background-color: var(--page); }
+
+@keyframes loading-slide {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(300%); }
+}
+
+.loading-bar {
+  animation: loading-slide 1.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loading-bar { animation: none; width: 100%; }
+}
